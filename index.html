@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Standard favicon -->
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+
+        <!-- High-resolution favicon for modern browsers -->
+        <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
+        <link rel="android-chrome-512x512" type="image/png" sizes="512x512" href="./android-chrome-512x512.png">
+
+        <!-- Apple Touch Icon (for iOS) -->
+        <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+        <!-- Manifest file for Progressive Web Apps -->
+        <link rel="manifest" href="site.webmanifest">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HYPASUS Sniper</title>
+        <style>
+
+            .price-box {
+        display: inline-block; /* Allows it to wrap content */
+        padding: 15px 25px; /* Add padding inside the box */
+        background-color: #a74caf; /* Green background color */
+        color: white; /* Text color */
+        font-size: 18px; /* Font size */
+        font-weight: bold; /* Make text bold */
+        border-radius: 8px; /* Rounded corners */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
+        border: none; /* Remove border */
+        cursor: pointer; /* Pointer cursor for interactivity */
+        text-align: center; /* Center text inside the box */
+        transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
+    }
+
+        .price-box:hover {
+        transform: scale(1.05); /* Slightly enlarge on hover */
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+    }
+            body {
+                background-color: rgb(152, 0, 212); /* Full background color */
+                min-height: 100vh; /* Ensure content fills at least the viewport */
+                margin: 0; /* Remove default margin */
+                padding: 0;
+                display: flex;
+                flex-direction: column; /* Stack elements vertically */
+                align-items: center; /* Center horizontally */
+            }
+            .background {
+                position: fixed; /* Fixes the image so it doesn't scroll */
+                top: 8%;
+                left: 5%;
+                transform: translate(-50%, -50%);
+                width: 150px; /* Full width of the viewport */
+                height: 150px; /* Full height of the viewport */
+                background-image: url("https://gold-joint-warbler-618.mypinata.cloud/ipfs/QmR9dQA8vJi2xSKAd69sPQU7eZZyH6S67MG7qTQa7tr5q4");
+                background-size: cover; /* Ensures the image covers the entire viewport */
+                background-position: center; /* Centers the image */
+                background-repeat: no-repeat; /* Prevents tiling */
+                z-index: -1; /* Ensures the background stays behind all other content */
+            }
+            .hello {
+                text-align: center;
+                color: white; /* Color for the text */
+                margin-top: 20px; /* Adds some space between header and "Hello" */
+            }
+            footer {
+                text-align: center;
+                margin-top: auto; /* Pushes the footer to the bottom of the page */
+                padding: 10px;
+                border-top: 1px solid #74078f;
+            }
+            .footer-logo {
+                width: 40px;
+                height: auto;
+                vertical-align: middle;
+                margin-right: 8px;
+            }
+            .footer-link {
+                font-family: 'Courier New', monospace;
+                text-decoration: none;
+                color: #000000;
+                font-weight: bold;
+            }
+            /* Add a style for the Solana price display */
+            .price {
+                font-size: 24px;
+                color: #ffffff;
+                margin-left: 10px; /* Space between the image and text */
+            }
+            .price2 {
+                display: flex;
+                align-items: center; /* Aligns image and text vertically */
+                margin-top: 20px; /* Adds some space above the price */
+            }
+            /* Style for the Solana coin image */
+            .solana-image {
+                width: 40px; /* Adjust as necessary */
+                height: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="background"></div> <!-- Background as a fixed element -->
+        
+        <div class="price-box">
+            <p id="solana-price">Loading Solana Price...</p>
+        </div>
+        <div class="hello">
+
+            <!-- Solana Coin Image next to the Price -->
+            <div class="price2">
+                <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana Coin" class="solana-image">
+                <p class="price" id="solana-price"></p>
+            </div>
+        </div>
+
+        <footer>
+            <a href="https://x.com/BaseySOL" class="footer-link" target="_blank">
+                <img src="X4.png" alt="" class="footer-logo">
+                Made by BaseySOL
+            </a>
+        </footer>
+
+        <script>
+            // Function to fetch the current price of Solana (SOL) in USD
+            async function getSolanaPrice() {
+                const url = 'https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd';
+
+                try {
+                    const response = await fetch(url);
+                    const data = await response.json();
+                    
+                    // Display the price in the HTML element with id 'solana-price'
+                    document.getElementById('solana-price').innerText = `$${data.solana.usd}`;
+                } catch (error) {
+                    console.error('Error fetching Solana price:', error);
+                    document.getElementById('solana-price').innerText = 'Failed to fetch price';
+                }
+            }
+
+            // Call the function to get and display the price
+            getSolanaPrice();
+        </script>
+    </body>
+</html>
