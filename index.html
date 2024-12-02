@@ -50,9 +50,38 @@
             text-align: center; /* Center text inside the box */
             transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
             margin-top: 120px; /* Push the price box below the fixed toolbar */
+            width: 80%; /* Makes the box more responsive */
+            max-width: 400px; /* Limits the box width */
         }
 
-        .price-box:hover {
+        .content {
+            min-height: 10px; /* Added height to make the page scrollable */
+            padding: -20px;
+            color: white;
+            text-align: center;
+            width: 100%; /* Full width */
+        }
+        .transaction-box {
+            min-height: 2000px;
+            min-width: 1000px;
+            display: flex; /* For image and text alignment */
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+            padding: 15px 25px; /* Add padding inside the box */
+            background-color: #ffffff; /* Purple background color */
+            color: rgb(0, 0, 0); /* Text color */
+            font-size: 18px; /* Font size */
+            font-weight: bold; /* Make text bold */
+            border-radius: 80px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor for interactivity */
+            text-align: center; /* Center text inside the box */
+            transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
+            margin-top: 120px; /* Push the price box below the fixed toolbar */
+            width: 80%; /* Makes the box more responsive */
+            max-width: 400px; /* Limits the box width */
+        }
+
+        .price-box:hover, .transaction-box:hover {
             transform: scale(1.05); /* Slightly enlarge on hover */
             box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
         }
@@ -91,12 +120,8 @@
             height: auto;
         }
 
-        /* Content for scrolling */
-        .content {
-            height: 2000px; /* Added height to make the page scrollable */
-            padding: 20px;
-            color: white;
-        }
+        
+        
     </style>
 </head>
 <body>
@@ -112,12 +137,20 @@
         <p id="solana-price">Loading Solana Price...</p>
     </div>
 
+
     <!-- Add content here to make the page scrollable -->
     <div class="content">
         <h2>Welcome to HYPASUS</h2>
-        <p>This is some extra content to demonstrate scrolling. You can add more elements here to make the page scrollable.</p>
+        <p>This is the main stop for every Solana degen.</p>
         <!-- Add more paragraphs, images, or other elements as needed -->
     </div>
+    
+    <!-- Solana transaction box -->
+    <div class="transaction-box">
+        <p id="solana-transactions">Loading Solana Transactions...</p>
+    </div>
+
+    
 
     <!-- Footer -->
     <footer class="footer">
@@ -141,8 +174,22 @@
             }
         }
 
-        // Call the function to get and display the price
+        // Function to fetch the daily transaction count for Solana
+        async function getSolanaTransactions() {
+            const url = 'https://public-api.solscan.io/v1/transaction/count?date=today';  // Example URL, replace with a valid one
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                document.getElementById('solana-transactions').innerText = `${data.count} Transactions Today`;
+            } catch (error) {
+                console.error('Error fetching Solana transaction count:', error);
+                document.getElementById('solana-transactions').innerText = 'Failed to fetch transaction count';
+            }
+        }
+
+        // Call the functions to get and display the data
         getSolanaPrice();
+        getSolanaTransactions();
     </script>
 
 </body>
