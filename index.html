@@ -61,6 +61,19 @@
             text-align: center;
             width: 100%; /* Full width */
         }
+
+        .video-container {
+            text-align: center;
+            color: white;
+            width: 100%;
+            max-width: 600px; /* Adjust the max width for responsiveness */
+            margin: 20px auto; /* Center the video container */
+        }
+        #Fungibles-Hype {
+    width: 100%; /* Ensure the video takes up the full width of the container */
+    border-radius: 10px; /* Optional: add rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Optional: add a shadow */
+}
         .transaction-box {
             min-height: 2000px;
             min-width: 1000px;
@@ -95,6 +108,7 @@
             color: #ffffff;
             margin-left: 10px; /* Space between the image and text */
         }
+
 
         /* Footer styling */
         .footer {
@@ -148,12 +162,19 @@
         <!-- Add more paragraphs, images, or other elements as needed -->
     </div>
     
+    <div class="video-container">
+        <h2>Watch the latest Magic Eden video here!</h2>
+        <video id="Fungibles-Hype" controls>
+            <source src="Fungibles-Hype.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
     <!-- Solana transaction box -->
     <div class="transaction-box">
         <p id="solana-transactions">Loading Solana Transactions...</p>
     </div>
 
-    
 
     <!-- Footer -->
     <footer class="footer">
