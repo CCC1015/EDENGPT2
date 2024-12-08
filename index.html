@@ -37,23 +37,39 @@
 
         /* Solana price box positioned below the toolbar */
         .price-box {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex; /* For image and text alignment */
-            align-items: center; /* Center vertically */
-            justify-content: center; /* Center horizontally */
-            padding: 15px 25px; /* Add padding inside the box */
-            background-color: #ffffff; /* Purple background color */
-            color: rgb(0, 0, 0); /* Text color */
-            font-size: 18px; /* Font size */
-            font-weight: lighter; /* Make text bold */
-            border-radius: 80px; /* Rounded corners */
-            cursor: pointer; /* Pointer cursor for interactivity */
-            text-align: center; /* Center text inside the box */
-            transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
-            margin-top: 120px; /* Push the price box below the fixed toolbar */
-            width: 80%; /* Makes the box more responsive */
-            max-width: 400px; /* Limits the box width */
+           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+           display: flex; /* For image and text alignment */
+           align-items: center; /* Center vertically */
+           justify-content: center; /* Center horizontally */
+           padding: 15px 25px; /* Add padding inside the box */
+           background-color: #ffffff; /* Box background color */
+           color: rgb(0, 0, 0); /* Text color */
+           font-size: 18px; /* Font size */
+           font-weight: lighter; /* Font weight */
+           border-radius: 80px; /* Rounded corners */
+           cursor: pointer; /* Pointer cursor for interactivity */
+           text-align: center; /* Center text inside the box */
+           transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
+           margin-top: 120px; /* Push the price box below the fixed toolbar */
+           width: 80%; /* Makes the box more responsive */
+           max-width: 400px; /* Limits the box width */
+           position: relative; /* Allows positioning of link inside the box */
+           overflow: hidden; /* Prevent content overflow */
         }
+
+        .price-box a {
+    position: absolute; /* Makes the <a> tag span the full box */
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width of the .price-box */
+    height: 100%; /* Full height of the .price-box */
+    text-decoration: none; /* Removes underline styling */
+    z-index: 1; /* Below the visible content but clickable */
+    background: transparent; /* Keeps it invisible */
+}
+
+
+        
 
         .content {
             min-height: 10px; /* Added height to make the page scrollable */
@@ -172,9 +188,11 @@
 
     <!-- Solana price box -->
     <div class="price-box">
+        <a href="https://coinmarketcap.com/currencies/solana/" target="_blank"></a>
         <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana Coin" class="solana-image">
         <p id="solana-price">Loading Solana Price...</p>
     </div>
+    
 
 
     <!-- Add content here to make the page scrollable -->
