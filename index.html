@@ -136,8 +136,9 @@
             text-align: center;
             margin-top: auto; /* Pushes the footer to the bottom of the page */
             padding: 10px;
-            border-top: 1px solid #74078f;
+            border-top: 2px solid #74078f;
         }
+
 
         .footer-logo {
             width: 40px;
@@ -199,14 +200,20 @@
         <p id="solana-transactions">Loading Magic-Eden Launchpad...</p>
     </div>
 
-
     <!-- Footer -->
-    <footer class="footer">
+<footer class="footer">
+    <div class="footer-container">
+        <a href="https://magiceden.io/" class="footer-link" target="_blank">
+            <img src="frontend/pics/MagicEden.png" alt="Magic Eden" class="footer-logo">
+            Powered by Magic Eden
+        </a>
         <a href="https://x.com/BaseySOL" class="footer-link" target="_blank">
-            <img src="frontend/pics/X4.png" alt="" class="footer-logo">
+            <img src="frontend/pics/X4.png" alt="BaseySOL" class="footer-logo">
             Made by BaseySOL
         </a>
-    </footer>
+    </div>
+</footer>
+
 
     <script>
         // Function to fetch the current price of Solana (SOL) in USD
