@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HYPASUS</title>
     <style>
+
+
         body {
             background-color: rgb(152, 0, 212); /* Full background color */
             min-height: 100vh; /* Ensure content fills at least the viewport */
@@ -67,7 +69,16 @@
             z-index: 1; /* Below the visible content but clickable */
             background: transparent; /* Keeps it invisible */
         }
-
+        #jupiter-terminal-container {
+            width: 100%;
+            max-width: 600x;
+            height: 400px;
+            margin: 20px auto;
+            overflow: hidden;
+            display: contain;
+            position: relative;
+            background-color: #ec09ce;
+        }
         .content {
             min-height: 10px; /* Added height to make the page scrollable */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -121,16 +132,6 @@
             box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
         }
 
-        #jupiter-terminal-container {
-            width: 100%;
-            max-width: 600px;
-            height: 400px;
-            margin: 20px auto;
-            overflow: hidden;
-            position: relative;
-            background-color: #000000;
-        }
-
         /* Price styling */
         .price {
             font-size: 24px;
@@ -156,7 +157,7 @@
         .footer-link {
             font-family: 'Courier New', monospace;
             text-decoration: none;
-            color: #000000;
+            color: #ffffff;
             font-weight: bold;
         }
 
@@ -180,18 +181,19 @@
 
     <!-- Add content here to make the page scrollable -->
     <div class="content">
-        <h2>Welcome to HYPASUS</h2>
-        <p>This is the main stop for every Solana degen.</p>
+        <h1>Welcome to HYPASUS</h1>
+        <p style="font-size: 13px;">This is the main stop for every Solana degen.</p>
     </div>
     
     <div class="video-container">
-        <h2>Watch the latest Magic Eden video here!</h2>
+        <h2 style="font-size: 25px;">Watch the latest Magic Eden video here!</h2>
         <video id="Fungibles-Hype" controls>
             <source src="frontend/pics/Fungibles-Hype.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
 
+    
     <!-- Container for the Jupiter widget -->
     <div id="jupiter-terminal-container"></div>
 
@@ -203,13 +205,13 @@
             Jupiter.init({
                 container: document.getElementById('jupiter-terminal-container'),
                 endpoint: 'https://api.mainnet-beta.solana.com',
-                mode: 'dark', // Choose dark or light mode
+                mode: 'dark',
                 defaultInputMint: 'SOL',
                 platformFeeAndAccounts: {
                     feeBps: 5,
-                    feeAccounts: ['YourPlatformWalletAddress'], // Your platform wallet address
+                    feeAccounts: ['YourPlatformWalletAddress'],
                 },
-                supportedTokens: ['SOL', 'USDC', 'USDT'], // Specify supported tokens
+                supportedTokens: ['SOL', 'USDC', 'USDT'],
             }).then(() => {
                 const widget = document.querySelector('#jupiter-terminal-container .jupiter-widget');
                 if (widget) {
@@ -227,6 +229,7 @@
 
     <!-- Solana transaction box -->
     <div class="launchpad-box">
+        <iframe src="https://dexscreener.com/solana/sol-usdt" width="100%" height="500" style="border: none;"></iframe>
         <p id="solana-transactions">Loading Magic-Eden Launchpad...</p>
     </div>
 
@@ -235,7 +238,7 @@
         <div class="footer-container">
             <a href="https://magiceden.io/" class="footer-link" target="_blank">
                 <img src="frontend/pics/MagicEden.png" alt="Magic Eden" class="footer-logo">
-                Powered by Magic Eden
+                <span><strong>Powered</strong> by Magic Eden</span>
             </a>
             <a href="https://x.com/BaseySOL" class="footer-link" target="_blank">
                 <img src="frontend/pics/X4.png" alt="BaseySOL" class="footer-logo">
@@ -277,4 +280,9 @@
     </script>
 
 </body>
+
+
+
+
+
 </html>
