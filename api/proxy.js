@@ -1,4 +1,3 @@
-// api/proxy.js
 import fetch from 'node-fetch';
 
 const API_KEY = 'e03da45e-48c5-4fce-a4db-88fb42365f37';
@@ -17,7 +16,7 @@ export default async function handler(req, res) {
         }
 
         const data = await response.json();
-        res.json(data);
+        res.status(200).json(data);
     } catch (error) {
         console.error('Proxy error:', error);
         res.status(500).json({ error: 'Internal Server Error' });
