@@ -102,23 +102,13 @@
             border-radius: 10px; /* Optional: add rounded corners */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Optional: add a shadow */
         }
-        .Meapicontent {
-            min-height: 2000px;
-            min-width: 1000px;
-            display: flex; /* For image and text alignment */
-            align-items: center; /* Center vertically */
-            justify-content: center; /* Center horizontally */
-            padding: 15px 25px; /* Add padding inside the box */
-            background-color: #ff0000; /* Purple background color */
-            color: rgb(0, 0, 0); /* Text color */
-            font-size: 18px; /* Font size */
-            font-weight: bold; /* Make text bold */
-            border-radius: 80px; /* Rounded corners */
-            cursor: pointer; /* Pointer cursor for interactivity */
-            text-align: center; /* Center text inside the box */
-            margin-top: 120px; /* Push the price box below the fixed toolbar */
-            width: 80%; /* Makes the box more responsive */
-            max-width: 400px; /* Limits the box width */
+        .MEapicontent {
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            width: 10%;
+            max-width: 600px; /* Adjust the max width for responsiveness */
+            margin: 20px auto; /* Center the video container */
         }
     
 
@@ -227,8 +217,7 @@
     </div>
     <!-- Section to display API results -->
     <div class="MEapicontent">
-        <h2>Top 20 Tensorians Collection</h2>
-        <div id="api-response" class="api-results">Loading...</div>
+        <div id="api-response" class="api-results">Loading Magic Eden art...</div>
     </div>
 
     <!-- Script to Fetch API Data -->
@@ -248,7 +237,7 @@
     
                 // Display the images dynamically
                 const contentDiv = document.querySelector('.content');
-                contentDiv.innerHTML = '<h2>Fetched Collections</h2>';  // Clear any existing content
+                contentDiv.innerHTML = '<h2>Random Magic Eden collections</h2>';  // Clear any existing content
                 
                 // Loop through the image URLs and append each image to the page
                 imageUrls.forEach(imageUrl => {
