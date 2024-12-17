@@ -1,0 +1,32 @@
+<!-- Container for the Jupiter widget -->
+    <div id="jupiter-terminal-container"></div>
+
+    <script src="https://terminal.jup.ag/main-v3.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize the Jupiter Terminal inside the container
+            Jupiter.init({
+                container: document.getElementById('jupiter-terminal-container'),
+                endpoint: 'https://api.mainnet-beta.solana.com',
+                mode: 'dark',
+                defaultInputMint: 'SOL',
+                platformFeeAndAccounts: {
+                    feeBps: 5,
+                    feeAccounts: ['YourPlatformWalletAddress'],
+                },
+                supportedTokens: ['SOL', 'USDC', 'USDT'],
+            }).then(() => {
+                const widget = document.querySelector('#jupiter-terminal-container .jupiter-widget');
+                if (widget) {
+                    widget.style.width = '100%';
+                    widget.style.height = '100%';
+                    widget.style.position = 'absolute';
+                    widget.style.overflow = 'hidden';
+                }
+            }).catch((error) => {
+                console.error('Error loading Jupiter widget:', error);
+                document.getElementById('jupiter-terminal-container').innerText = 'Failed to load Jupiter Terminal';
+            });
+        });
+    </script>

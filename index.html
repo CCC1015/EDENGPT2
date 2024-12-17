@@ -83,7 +83,7 @@
             min-height: 10px; /* Added height to make the page scrollable */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding: 0px;
-            color: white;
+            color: rgb(255, 255, 255);
             text-align: center;
             width: 100%; /* Full width */
         }
@@ -102,7 +102,37 @@
             border-radius: 10px; /* Optional: add rounded corners */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Optional: add a shadow */
         }
+        .Meapicontent {
+            min-height: 2000px;
+            min-width: 1000px;
+            display: flex; /* For image and text alignment */
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+            padding: 15px 25px; /* Add padding inside the box */
+            background-color: #ff0000; /* Purple background color */
+            color: rgb(0, 0, 0); /* Text color */
+            font-size: 18px; /* Font size */
+            font-weight: bold; /* Make text bold */
+            border-radius: 80px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor for interactivity */
+            text-align: center; /* Center text inside the box */
+            margin-top: 120px; /* Push the price box below the fixed toolbar */
+            width: 80%; /* Makes the box more responsive */
+            max-width: 400px; /* Limits the box width */
+        }
+    
 
+        .api-results {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #ffffff;
+        color: #000000;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        max-width: 600px;
+        text-align: left;
+        overflow-wrap: break-word;
+        }
         .launchpad-box {
             min-height: 2000px;
             min-width: 1000px;
@@ -110,7 +140,7 @@
             align-items: center; /* Center vertically */
             justify-content: center; /* Center horizontally */
             padding: 15px 25px; /* Add padding inside the box */
-            background-color: #ffffff; /* Purple background color */
+            background-color: #ff0000; /* Purple background color */
             color: rgb(0, 0, 0); /* Text color */
             font-size: 18px; /* Font size */
             font-weight: bold; /* Make text bold */
@@ -169,6 +199,9 @@
 </head>
 <body>
 
+    
+
+
     <!-- Floating background box (fixed at the top) -->
     <div class="background-box"></div>
 
@@ -192,40 +225,51 @@
             Your browser does not support the video tag.
         </video>
     </div>
+    <!-- Section to display API results -->
+    <div class="MEapicontent">
+        <h2>Top 20 Tensorians Collection</h2>
+        <div id="api-response" class="api-results">Loading...</div>
+    </div>
 
-    
-    <!-- Container for the Jupiter widget -->
-    <div id="jupiter-terminal-container"></div>
-
-    <script src="https://terminal.jup.ag/main-v3.js"></script>
-
+    <!-- Script to Fetch API Data -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Initialize the Jupiter Terminal inside the container
-            Jupiter.init({
-                container: document.getElementById('jupiter-terminal-container'),
-                endpoint: 'https://api.mainnet-beta.solana.com',
-                mode: 'dark',
-                defaultInputMint: 'SOL',
-                platformFeeAndAccounts: {
-                    feeBps: 5,
-                    feeAccounts: ['YourPlatformWalletAddress'],
-                },
-                supportedTokens: ['SOL', 'USDC', 'USDT'],
-            }).then(() => {
-                const widget = document.querySelector('#jupiter-terminal-container .jupiter-widget');
-                if (widget) {
-                    widget.style.width = '100%';
-                    widget.style.height = '100%';
-                    widget.style.position = 'absolute';
-                    widget.style.overflow = 'hidden';
+        async function fetchCollections() {
+            const url = 'http://localhost:3000/api/collections'; // Proxy server URL
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`Error ${response.status}: ${response.statusText}`);
                 }
-            }).catch((error) => {
-                console.error('Error loading Jupiter widget:', error);
-                document.getElementById('jupiter-terminal-container').innerText = 'Failed to load Jupiter Terminal';
-            });
-        });
+                const data = await response.json();
+                console.log('Collections Data:', data);
+    
+                // Get all image URLs from the API response
+                const imageUrls = data.map(collection => collection.image);
+    
+                // Display the images dynamically
+                const contentDiv = document.querySelector('.content');
+                contentDiv.innerHTML = '<h2>Fetched Collections</h2>';  // Clear any existing content
+                
+                // Loop through the image URLs and append each image to the page
+                imageUrls.forEach(imageUrl => {
+                    const imgElement = document.createElement('img');
+                    imgElement.src = imageUrl;
+                    imgElement.alt = 'Collection Image';
+                    imgElement.style.width = '300px'; // Optional: you can adjust the size
+                    imgElement.style.margin = '10px'; // Optional: add margin between images
+                    contentDiv.appendChild(imgElement);
+                });
+    
+            } catch (error) {
+                console.error('Error fetching collections:', error);
+                alert('Failed to fetch collections. See console for details.');
+            }
+        }
+    
+        // Call the function when the page loads
+        fetchCollections();
     </script>
+    
 
     <!-- Solana transaction box -->
     <div class="launchpad-box">
@@ -261,22 +305,10 @@
             }
         }
 
-        // Function to fetch the daily transaction count for Solana
-        async function getSolanaTPS() {
-            const url = 'https://api.mainnet-beta.solana.com';  // Example endpoint for TPS data
-            try {
-                const response = await fetch(url);
-                const data = await response.json();
-                document.getElementById('solana-tps').innerText = `${data.tps} TPS`; // Assuming the response has a 'tps' field
-            } catch (error) {
-                console.error('Error fetching Solana TPS:', error);
-                document.getElementById('solana-tps').innerText = 'Failed to fetch TPS';
-            }
-        }
+      
 
         // Call the functions to get and display the data
         getSolanaPrice();
-        getSolanaTPS();
     </script>
 
 </body>
