@@ -71,7 +71,7 @@
         }
         #jupiter-terminal-container {
             width: 100%;
-            max-width: 600x;
+            max-width: 600px;
             height: 400px;
             margin: 20px auto;
             overflow: hidden;
@@ -149,10 +149,10 @@
         }
 
         .footer-link {
-            font-family: 'Courier New', monospace;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-decoration: none;
             color: #ffffff;
-            font-weight: bold;
+            font-weight: 100;
         }
 
         .solana-image {
@@ -231,11 +231,31 @@
         fetchCollections();
     </script>
     
+    <!-- Attach the loading script in your <head /> -->
+<script src='https://terminal.jup.ag/main-v3.js'></script>
+
+<!-- Container for the Jupiter widget -->
+<div id="jupiter-terminal-container" style="width: 100%; max-width: 600px; height: 400px; margin: 20px auto; overflow: hidden; background-color: #ec09ce;"></div>
+
+<script>
+    // Initialize Jupiter Terminal
+    window.Jupiter.init({
+        displayMode: "widget", // Modes: 'widget' or 'modal'
+        endpoint: "https://magical-convincing-owl.solana-mainnet.quiknode.pro/f3d44d0c0965e1d058eec1da85f1d3b620180036", // Solana mainnet endpoint
+        container: document.getElementById("jupiter-terminal-container"), // Target container
+        strictTokenList: true, // Use strict token validation
+        useUserSlippage: true, // Allow users to set custom slippage
+        initialSlippageBps: 50, // Set initial slippage in basis points (e.g., 50 = 0.5%)
+        fixedInputMint: null, // Replace with input token mint address if needed
+        fixedOutputMint: null, // Replace with output token mint address if needed
+    });
+</script>
+
 
     <!-- Solana transaction box -->
     <div class="launchpad-box">
         <iframe src="https://dexscreener.com/solana/sol-usdt" width="100%" height="500" style="border: none;"></iframe>
-        <p id="solana-transactions">Dexscreener is not responding</p>
+        
     </div>
 
     <!-- Footer -->
@@ -243,11 +263,16 @@
         <div class="footer-container">
             <a href="https://magiceden.io/" class="footer-link" target="_blank">
                 <img src="frontend/pics/MagicEden.png" alt="Magic Eden" class="footer-logo">
-                <span><strong>Powered</strong> by Magic Eden</span>
+                Powered by <strong>Magic Eden</strong>
             </a>
+            <a href="https://jup.ag/" class="footer-link" target="_blank">
+                <img src="frontend/pics/Jupiter.png" alt="BaseySOL" class="footer-logo">
+                Powered by <strong>Jupiter</strong>
+            </a>
+
             <a href="https://x.com/BaseySOL" class="footer-link" target="_blank">
                 <img src="frontend/pics/X4.png" alt="BaseySOL" class="footer-logo">
-                Made by BaseySOL
+                Made by <strong>BaseySOL</strong>
             </a>
         </div>
     </footer>
