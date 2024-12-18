@@ -8,8 +8,8 @@ const PORT = 3000;
 app.use(cors()); // Allow all origins
 app.use(express.json());
 
-const API_KEY = 'e03da45e-48c5-4fce-a4db-88fb42365f37';
-const API_URL = 'https://api-mainnet.magiceden.dev/v2/collections?offset=0&limit=20&symbol=TENSORIANS';
+const API_KEY = process.env.API_KEY;
+const API_URL = 'https://api-mainnet.magiceden.dev/v2/collections?offset=0&limit=20&symbol=degods';
 
 // Proxy endpoint
 app.get('/api/collections', async (req, res) => {
