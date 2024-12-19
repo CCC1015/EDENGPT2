@@ -78,6 +78,14 @@
             margin: 20px auto; /* Center the video container */
             overflow: hidden;
         }
+        .Song-container {
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: rgb(255, 0, 0);
+            width: 100%;
+            max-width: 400px; /* Adjust the max width for responsiveness */
+            margin: 20px auto; /* Center the video container */
+        }
         .content {
             min-height: 10px; /* Added height to make the page scrollable */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -261,12 +269,12 @@
             Your browser does not support the video tag.
         </video>
     </div>
-    
+    <div class="Song-container">
     <audio controls autoplay loop>
         <source src="frontend/pics/NCS.mp3" type="audio/mp3">
         Your browser does not support the audio tag.
     </audio>
-    
+</div>
 
     <!-- Footer -->
     <footer class="footer">
