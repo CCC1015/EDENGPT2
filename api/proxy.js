@@ -5,6 +5,9 @@ import cors from 'cors';
 const app = express();
 const PORT = 3000;
 
+app.use(express.static('public')); // Serve static files from the 'public' folder
+
+
 app.use(cors()); // Allow all origins
 app.use(express.json());
 
