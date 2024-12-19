@@ -192,14 +192,14 @@
     <div class="video-container">
         <h2 style="font-size: 25px;">Watch the latest Magic Eden video here!</h2>
         <video controls autoplay loop muted id="Fungibles-Hype">
-            <source src="/frontend/pics/Fungibles-Hype.mp4" type="video/mp4">
+            <source src="/public/pics/Fungibles-Hype.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
     <!-- Section to display API results -->
     <div class="MEapicontent">
         <a href="https://magiceden.io/" class="footer-link" target="_blank">
-            <img src="/frontend/pics/MagicEden.png" alt="Magic Eden" class="footer-logo">
+            <img src="/public/pics/MagicEden.png" alt="Magic Eden" class="footer-logo">
             
         </a>
         <div id="api-response" class="api-results">Magic Eden content couldn't load</div>
@@ -208,7 +208,7 @@
     <!-- Script to Fetch API Data -->
     <script>
         async function fetchCollections() {
-            const url = '/api/collections'; // Proxy server URL
+            const url = 'http://localhost:3000/api/collections'; // Proxy server URL
             try {
                 const response = await fetch(url);
                 if (!response.ok) {
@@ -265,13 +265,13 @@
 
     <div class="Gemmy-container">
         <video controls autoplay loop muted>
-            <source src="/frontend/pics/GEMMY.mp4" type="video/mp4">
+            <source src="/public/pics/GEMMY.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
     <div class="Song-container">
     <audio controls autoplay loop>
-        <source src="/frontend/pics/NCS.mp3" type="audio/mp3">
+        <source src="/public/pics/NCS.mp3" type="audio/mp3">
         Your browser does not support the audio tag.
     </audio>
 </div>
@@ -280,16 +280,16 @@
     <footer class="footer">
         <div class="footer-container">
             <a href="https://magiceden.io/" class="footer-link" target="_blank">
-                <img src="/frontend/pics/MagicEden.png" alt="Magic Eden" class="footer-logo">
+                <img src="/public/pics/MagicEden.png" alt="Magic Eden" class="footer-logo">
                 Powered by <strong>Magic Eden</strong>
             </a>
             <a href="https://jup.ag/" class="footer-link" target="_blank">
-                <img src="/frontend/pics/Jupiter.png" alt="BaseySOL" class="footer-logo">
+                <img src="/public/pics/Jupiter.png" alt="BaseySOL" class="footer-logo">
                 Powered by <strong>Jupiter</strong>
             </a>
 
             <a href="https://x.com/BaseySOL" class="footer-link" target="_blank">
-                <img src="/frontend/pics/X4.png" alt="BaseySOL" class="footer-logo">
+                <img src="/public/pics/X4.png" alt="BaseySOL" class="footer-logo">
                 Made by <strong>BaseySOL</strong>
             </a>
         </div>
